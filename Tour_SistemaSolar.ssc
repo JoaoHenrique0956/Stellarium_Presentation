@@ -1,0 +1,168 @@
+// Author: João Henrique
+// Tour pelos planetas do Sistema Solar
+
+// =====================
+// FUNÇÕES
+// =====================
+
+function modoPalestra()
+{
+    LandscapeMgr.setFlagAtmosphere(false);
+    LandscapeMgr.setFlagLandscape(false);
+    LandscapeMgr.setFlagCardinalPoints(false);
+
+    ConstellationMgr.setFlagLines(false);
+    ConstellationMgr.setFlagLabels(false);
+    ConstellationMgr.setFlagArt(false);
+    ConstellationMgr.setFlagBoundaries(false);
+
+    GridLinesMgr.setFlagEquatorGrid(false);
+    GridLinesMgr.setFlagEquatorLine(false);
+    GridLinesMgr.setFlagAzimuthalGrid(false);
+    GridLinesMgr.setFlagEclipticLine(false);
+    GridLinesMgr.setFlagMeridianLine(false);
+    GridLinesMgr.setFlagCircumpolarCircles(false);
+    GridLinesMgr.setFlagCelestialPoles(false);
+
+    core.setGuiVisible(false);
+}
+
+
+// =====================
+// INÍCIO
+// =====================
+
+core.setTimeRate(0);
+modoPalestra();
+
+
+// =====================
+// MERCÚRIO
+// =====================
+
+core.selectObjectByName("Mercury");
+StelMovementMgr.setFlagTracking(true);
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// VÊNUS
+// =====================
+
+core.selectObjectByName("Venus");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// TERRA (VISTA DA LUA)
+// =====================
+
+core.setObserverLocation(
+    0,
+    0,
+    0,
+    5,
+    "Moon",
+    "Moon"
+);
+
+core.wait(8);
+
+modoPalestra();
+
+core.selectObjectByName("Earth");
+core.moveToSelectedObject(3);
+
+core.wait(2);
+
+// Zoom mais aberto
+StelMovementMgr.zoomTo(2, 3);
+
+core.wait(10);
+
+
+// =====================
+// VOLTA PARA A TERRA
+// =====================
+
+core.setObserverLocation(
+    -45.9,
+    -23.22,
+    650,
+    5,
+    "São José dos Campos",
+    "Earth"
+);
+
+core.wait(5);
+
+modoPalestra();
+
+
+// =====================
+// MARTE
+// =====================
+
+core.selectObjectByName("Mars");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// JÚPITER
+// =====================
+
+core.selectObjectByName("Jupiter");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.005, 5);
+core.wait(10);
+
+
+// =====================
+// SATURNO
+// =====================
+
+core.selectObjectByName("Saturn");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.008, 5);
+core.wait(10);
+
+
+// =====================
+// URANO
+// =====================
+
+core.selectObjectByName("Uranus");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// NETUNO
+// =====================
+
+core.selectObjectByName("Neptune");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// FINALIZAÇÃO
+// =====================
+
+StelMovementMgr.setFlagTracking(false);
+StelMovementMgr.zoomTo(60, 5);
