@@ -1,0 +1,77 @@
+//=======================================================
+//Autor:João Henrique M. Oliveira
+//Script:Stellarium - Fases da Lua
+//======================================================
+
+function desativarCenario(){
+    LandscapeMgr.setFlagAtmosphere(false);
+    LandscapeMgr.setFlagLandscape(false);
+    LandscapeMgr.setFlagCardinalPoints(false);
+}
+
+function fasesLua()
+{
+    core.selectObjectByName("Moon", false);
+    StelMovementMgr.setFlagTracking(true);
+
+    StelMovementMgr.setFov(1);
+
+    // --------------------
+    // Lua Minguante
+    core.setDate("2026:06:08T00:00:00");
+    core.wait(1);
+
+    LabelMgr.labelScreen("Lua Minguante", 480, 550, true, 36, "#FFFF00");
+    core.wait(10);
+    LabelMgr.deleteAllLabels();
+
+    // --------------------
+    // Lua Nova
+    core.setDate("2026:06:14T00:00:00");
+    core.wait(1);
+
+    LabelMgr.labelScreen("Lua Nova", 520, 570, true, 36, "#FFFF00");
+    core.wait(10);
+    LabelMgr.deleteAllLabels();
+
+    // --------------------
+    // Quarto Crescente
+    core.setDate("2026:06:21T00:00:00");
+    core.wait(1);
+
+    LabelMgr.labelScreen("Lua Crescente", 470, 550, true, 36, "#FFFF00");
+    core.wait(10);
+    LabelMgr.deleteAllLabels();
+
+    // --------------------
+    // Lua Cheia
+    core.setDate("2026:06:29T00:00:00");
+    core.wait(1);
+
+    LabelMgr.labelScreen("Lua Cheia", 530, 550, true, 36, "#FFFF00");
+    core.wait(10);
+    LabelMgr.deleteAllLabels();
+}
+
+function voltarTerra()
+{
+    core.setDate("2026:06:21T12:00:00");
+    core.selectObjectByName("", false);
+    StelMovementMgr.setFlagTracking(false);
+
+    core.clear("natural");
+
+    StelMovementMgr.setFov(110);
+
+    LandscapeMgr.setFlagLandscape(true);
+    LandscapeMgr.setFlagAtmosphere(true);
+    LandscapeMgr.setFlagFog(true);
+
+    core.wait(10);
+
+   
+}
+
+desativarCenario();
+fasesLua();
+voltarTerra();
