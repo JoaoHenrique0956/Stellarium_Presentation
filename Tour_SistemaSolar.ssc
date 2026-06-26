@@ -1,81 +1,168 @@
-//=======================================================
-// Autor: João Henrique M. Oliveira
-// Script: Stellarium - Fases da Lua
-//=======================================================
+// Author: João Henrique
+// Tour pelos planetas do Sistema Solar
 
-function desativarCenario()
+// =====================
+// FUNÇÕES
+// =====================
+
+function modoPalestra()
 {
     LandscapeMgr.setFlagAtmosphere(false);
     LandscapeMgr.setFlagLandscape(false);
     LandscapeMgr.setFlagCardinalPoints(false);
+
+    ConstellationMgr.setFlagLines(false);
+    ConstellationMgr.setFlagLabels(false);
+    ConstellationMgr.setFlagArt(false);
+    ConstellationMgr.setFlagBoundaries(false);
+
+    GridLinesMgr.setFlagEquatorGrid(false);
+    GridLinesMgr.setFlagEquatorLine(false);
+    GridLinesMgr.setFlagAzimuthalGrid(false);
+    GridLinesMgr.setFlagEclipticLine(false);
+    GridLinesMgr.setFlagMeridianLine(false);
+    GridLinesMgr.setFlagCircumpolarCircles(false);
+    GridLinesMgr.setFlagCelestialPoles(false);
+
+    core.setGuiVisible(false);
 }
 
-function mostrarFase(data, texto)
-{
-    core.setDate(data);
-    core.wait(1);
 
-    core.selectObjectByName("Moon", false);
-    StelMovementMgr.setFlagTracking(true);
-    core.moveToSelectedObject(1);
+// =====================
+// INÍCIO
+// =====================
 
-    // Zoom na Lua
-    StelMovementMgr.zoomTo(0.2, 2);
+core.setTimeRate(0);
+modoPalestra();
 
-    core.wait(2);
 
-    LabelMgr.labelScreen(texto, 450, 550, true, 36, "#FFFF00");
-    core.wait(10);
-    LabelMgr.deleteAllLabels();
-}
+// =====================
+// MERCÚRIO
+// =====================
 
-function fasesLua()
-{
-    // Lua Minguante
-    mostrarFase(
-        "2026:06:08T00:00:00",
-        "Lua Minguante"
-    );
+core.selectObjectByName("Mercury");
+StelMovementMgr.setFlagTracking(true);
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
 
-    // Lua Nova
-    mostrarFase(
-        "2026:06:14T00:00:00",
-        "Lua Nova"
-    );
 
-    // Lua Crescente
-    mostrarFase(
-        "2026:06:21T00:00:00",
-        "Lua Crescente"
-    );
+// =====================
+// VÊNUS
+// =====================
 
-    // Lua Cheia
-    mostrarFase(
-        "2026:06:29T00:00:00",
-        "Lua Cheia"
-    );
-}
+core.selectObjectByName("Venus");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
 
-function voltarTerra()
-{
-    LabelMgr.deleteAllLabels();
 
-    StelMovementMgr.setFlagTracking(false);
-    core.selectObjectByName("", false);
+// =====================
+// TERRA (VISTA DA LUA)
+// =====================
 
-    // Afasta a câmera gradualmente
-    StelMovementMgr.zoomTo(110, 3);
+core.setObserverLocation(
+    0,
+    0,
+    0,
+    5,
+    "Moon",
+    "Moon"
+);
 
-    LandscapeMgr.setFlagLandscape(true);
-    LandscapeMgr.setFlagAtmosphere(true);
-    LandscapeMgr.setFlagFog(true);
+core.wait(8);
 
-    core.setDate("2026:06:21T12:00:00");
+modoPalestra();
 
-    core.wait(5);
-}
+core.selectObjectByName("Earth");
+core.moveToSelectedObject(3);
 
-// Execução
-desativarCenario();
-fasesLua();
-voltarTerra();
+core.wait(2);
+
+// Zoom mais aberto
+StelMovementMgr.zoomTo(2, 3);
+
+core.wait(10);
+
+
+// =====================
+// VOLTA PARA A TERRA
+// =====================
+
+core.setObserverLocation(
+    -45.9,
+    -23.22,
+    650,
+    5,
+    "São José dos Campos",
+    "Earth"
+);
+
+core.wait(5);
+
+modoPalestra();
+
+
+// =====================
+// MARTE
+// =====================
+
+core.selectObjectByName("Mars");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// JÚPITER
+// =====================
+
+core.selectObjectByName("Jupiter");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.005, 5);
+core.wait(10);
+
+
+// =====================
+// SATURNO
+// =====================
+
+core.selectObjectByName("Saturn");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.008, 5);
+core.wait(10);
+
+
+// =====================
+// URANO
+// =====================
+
+core.selectObjectByName("Uranus");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// NETUNO
+// =====================
+
+core.selectObjectByName("Neptune");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(0.02, 5);
+core.wait(10);
+
+
+// =====================
+// FINALIZAÇÃO
+// =====================
+
+StelMovementMgr.setFlagTracking(false);
+StelMovementMgr.zoomTo(60, 5);
