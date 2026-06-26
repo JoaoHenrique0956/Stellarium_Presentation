@@ -1,4 +1,4 @@
-Aqui está uma versão mais profissional para o seu `README.md` do GitHub:
+
 
 # Stellarium_Presentation
 
