@@ -1,23 +1,46 @@
+# 🌌 Stellarium Presentation
 
+Coleção de scripts para o **Stellarium**, desenvolvidos para estudos, apresentações e divulgação de Astronomia.
 
-# Stellarium_Presentation
+## 📖 Sobre
 
-Este repositório reúne scripts desenvolvidos para o **Stellarium**, com foco em estudos de Astronomia, apresentações e divulgação científica.
+Este repositório reúne scripts escritos em **SSC (Stellarium Script)** para automatizar apresentações e demonstrar fenômenos astronômicos, como fases da Lua, movimentos celestes e outros conteúdos educacionais.
 
-Os scripts foram criados por mim e podem ser utilizados, modificados e estudados por qualquer pessoa interessada em aprender mais sobre o Stellarium e sua linguagem de scripts.
+O objetivo é disponibilizar exemplos que possam servir de base para estudantes, professores e entusiastas do Stellarium.
 
-## Como utilizar
+## 🚀 Como executar
 
-1. Baixe e instale o **Stellarium**.
+1. Instale o **Stellarium**.
 2. Abra o programa.
-3. Pressione **F12** para abrir o console de scripts.
-4. Cole o código do script ou importe o arquivo `.ssc` disponível neste repositório.
+3. Pressione **F12** para abrir o Console de Scripts.
+4. Copie e cole um dos scripts deste repositório **ou** importe o arquivo `.ssc`.
 5. Execute o script.
 
-## Objetivo
+## 📂 Estrutura
 
-Disponibilizar scripts que auxiliem no aprendizado de conceitos astronômicos e sirvam como base para estudos e apresentações em planetários, escolas e projetos de divulgação científica.
+```text
+.
+├── Stellarium_Presentation/
+│   ├── fases_lua.ssc
+│   ├── ...
+└── README.md
+```
 
-## Autor
+## ✨ Recursos
+
+* Scripts comentados.
+* Fácil personalização.
+* Voltado para apresentações e ensino.
+* Compatível com versões recentes do Stellarium.
+
+## 🤝 Contribuições
+
+Sugestões, melhorias e correções são bem-vindas. Sinta-se à vontade para abrir uma *Issue* ou enviar um *Pull Request*.
+
+## 📄 Licença
+
+Este projeto está disponível para fins educacionais. Caso reutilize os scripts, considere dar os devidos créditos.
+
+---
 
 Desenvolvido por **João Henrique**.
