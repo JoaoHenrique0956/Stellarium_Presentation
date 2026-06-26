@@ -35,7 +35,7 @@ O objetivo é disponibilizar exemplos que possam servir de base para estudantes,
 
 ## 🤝 Contribuições
 
-Sugestões, melhorias e correções são bem-vindas. Sinta-se à vontade para abrir uma *Issue* ou enviar um *Pull Request*.
+Sugestões, melhorias e correções são bem-vindas.
 
 ## 📄 Licença
 
