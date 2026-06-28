@@ -20,7 +20,7 @@ function mostrarFase(data, texto)
     core.moveToSelectedObject(1);
 
     // Zoom na Lua
-    StelMovementMgr.zoomTo(0.2, 2);
+    StelMovementMgr.zoomTo(1, 2);
 
     core.wait(2);
 
@@ -64,7 +64,7 @@ function voltarTerra()
     core.selectObjectByName("", false);
 
     // Afasta a câmera gradualmente
-    StelMovementMgr.zoomTo(110, 3);
+    StelMovementMgr.zoomTo(150, 3);
 
     LandscapeMgr.setFlagLandscape(true);
     LandscapeMgr.setFlagAtmosphere(true);
