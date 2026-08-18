@@ -37,15 +37,25 @@ modoPalestra();
 
 
 // =====================
+// SOL
+// =====================
+
+core.selectObjectByName("Sun");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(2, 5);
+core.wait(50);
+
+
+// =====================
 // MERCÚRIO
 // =====================
 
 core.selectObjectByName("Mercury");
-StelMovementMgr.setFlagTracking(true);
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.02, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.01, 5);
+core.wait(20);
 
 
 // =====================
@@ -56,7 +66,7 @@ core.selectObjectByName("Venus");
 core.moveToSelectedObject(3);
 core.wait(2);
 StelMovementMgr.zoomTo(0.02, 5);
-core.wait(10);
+core.wait(30);
 
 
 // =====================
@@ -82,9 +92,9 @@ core.moveToSelectedObject(3);
 core.wait(2);
 
 // Zoom mais aberto
-StelMovementMgr.zoomTo(2, 3);
+StelMovementMgr.zoomTo(5, 3);
 
-core.wait(10);
+core.wait(50);
 
 
 // =====================
@@ -104,6 +114,16 @@ core.wait(5);
 
 modoPalestra();
 
+// =====================
+// LUA
+// =====================
+
+core.selectObjectByName("Moon");
+core.moveToSelectedObject(3);
+core.wait(2);
+StelMovementMgr.zoomTo(2, 5);
+core.wait(40);
+
 
 // =====================
 // MARTE
@@ -112,8 +132,8 @@ modoPalestra();
 core.selectObjectByName("Mars");
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.02, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.005, 5);
+core.wait(25);
 
 
 // =====================
@@ -123,8 +143,8 @@ core.wait(10);
 core.selectObjectByName("Jupiter");
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.005, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.03, 5);
+core.wait(30);
 
 
 // =====================
@@ -134,8 +154,8 @@ core.wait(10);
 core.selectObjectByName("Saturn");
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.008, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.03,5);
+core.wait(30);
 
 
 // =====================
@@ -145,8 +165,8 @@ core.wait(10);
 core.selectObjectByName("Uranus");
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.02, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.006, 5);
+core.wait(20);
 
 
 // =====================
@@ -156,8 +176,8 @@ core.wait(10);
 core.selectObjectByName("Neptune");
 core.moveToSelectedObject(3);
 core.wait(2);
-StelMovementMgr.zoomTo(0.02, 5);
-core.wait(10);
+StelMovementMgr.zoomTo(0.004, 5);
+core.wait(20);
 
 
 // =====================
