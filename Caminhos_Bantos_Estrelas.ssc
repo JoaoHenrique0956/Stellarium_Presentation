@@ -1,0 +1,223 @@
+
+ //=======================================================
+ // Autor: João Henrique M. Oliveira - Técnico em informática 2026
+ // Script: Stellarium - As Estrelas e os Caminhos Bantos
+ //=======================================================
+
+// ======================================================
+// CONFIGURAÇÕES GERAIS
+// ======================================================
+
+function prepararCeu()
+{
+    // Ocultar referências celestes
+    GridLinesMgr.setFlagEquatorGrid(false);
+    GridLinesMgr.setFlagEquatorLine(false);
+    GridLinesMgr.setFlagAzimuthalGrid(false);
+    GridLinesMgr.setFlagEclipticLine(false);
+    GridLinesMgr.setFlagMeridianLine(false);
+    GridLinesMgr.setFlagCircumpolarCircles(false);
+    GridLinesMgr.setFlagCelestialPoles(false);
+
+    // Ocultar elementos do cenário
+    LandscapeMgr.setFlagAtmosphere(false);
+    LandscapeMgr.setFlagLandscape(false);
+    LandscapeMgr.setFlagCardinalPoints(false);
+
+    // Ocultar linhas, nomes e ilustrações das constelações
+    ConstellationMgr.setFlagLines(false);
+    ConstellationMgr.setFlagLabels(false);
+    ConstellationMgr.setFlagArt(false);
+    ConstellationMgr.setFlagBoundaries(false);
+}
+
+function mostrarTexto(texto, duracao)
+{
+    // Exibe uma legenda temporária
+    LabelMgr.labelScreen(
+        texto, 450, 550, true, 30, "#FFFF00"
+    );
+
+    core.wait(duracao);
+    LabelMgr.deleteAllLabels();
+}
+
+function destacarConstelacoes()
+{
+    ConstellationMgr.setFlagLines(true);
+    ConstellationMgr.setFlagLabels(true);
+    ConstellationMgr.setFlagArt(true);
+}
+
+function ocultarConstelacoes()
+{
+    ConstellationMgr.setFlagLines(false);
+    ConstellationMgr.setFlagLabels(false);
+     ConstellationMgr.setFlagArt(false);
+}
+
+function enquadrarObjeto(nome, zoom)
+{
+    core.selectObjectByName(nome, false);
+    StelMovementMgr.setFlagTracking(true);
+    core.moveToSelectedObject(2);
+    StelMovementMgr.zoomTo(zoom, 3);
+    core.wait(3);
+}
+
+// ======================================================
+// ABERTURA — A NOITE QUE CONECTA E LEMBRA
+// ======================================================
+
+function abertura()
+{
+    // A velocidade depende do horário inicial e do destino.
+    // Ajustar 540 após testar no planetário.
+    core.setTimeRate(540);
+    core.wait(30);
+    core.setTimeRate(0);
+
+    prepararCeu();
+
+    mostrarTexto(
+        "As Estrelas e os Caminhos Bantos",
+        5
+    );
+}
+
+// ======================================================
+// ATO 1 — O CAMINHO DAS ESTRELAS
+// VIA LÁCTEA
+// ======================================================
+
+function ato1ViaLactea()
+{
+    // Manter a visão do céu estática.
+    // A Via Láctea deve estar visível no enquadramento inicial.
+
+    mostrarTexto(
+        "A Via Láctea — O Caminho das Estrelas",
+        5
+    );
+
+    // Espaço reservado para a narração do Ato 1.
+    core.wait(50);
+}
+
+// ======================================================
+// ATO 2 — CRUZEIRO DO SUL
+// A ENCRUZILHADA CELESTE
+// ======================================================
+
+function ato2CruzeiroSul()
+{
+    destacarConstelacoes();
+
+    // Tentar enquadrar o Cruzeiro do Sul.
+    // Validar o nome reconhecido pela versão instalada.
+    enquadrarObjeto("Acrux", 15);
+
+    mostrarTexto(
+        "Cruzeiro do Sul — A Encruzilhada Celeste",
+        5
+    );
+
+    core.wait(50);
+
+    ocultarConstelacoes();
+}
+
+// ======================================================
+// ATO 3 — SIRIUS E AS TRÊS MARIAS
+// MARCADORES DE CICLOS
+// ======================================================
+
+function ato3SiriusOrion()
+{
+    // Primeiro destaque: Sirius
+    enquadrarObjeto("Sirius", 8);
+
+    mostrarTexto(
+        "Sirius — Marcadores de Ciclos",
+        5
+    );
+
+    core.wait(25);
+
+    // Segundo destaque: Alnitak, uma das Três Marias
+    enquadrarObjeto("Alnitak", 15);
+
+    destacarConstelacoes();
+
+    mostrarTexto(
+        "Órion — As Três Marias",
+        5
+    );
+
+    core.wait(30);
+
+    ocultarConstelacoes();
+}
+
+// ======================================================
+// ATO 4 — ESCORPIÃO E A FAUNA DO CÉU
+// ======================================================
+
+function ato4Escorpiao()
+{
+    // Antares é a estrela de destaque deste ato.
+    enquadrarObjeto("Antares", 12);
+
+    destacarConstelacoes();
+
+    mostrarTexto(
+        "Escorpião — A Fauna do Céu",
+        5
+    );
+
+    core.wait(40);
+
+    ocultarConstelacoes();
+}
+
+// ======================================================
+// ENCERRAMENTO — A HERANÇA VIVA NO NOSSO CÉU
+// ======================================================
+
+function encerramento()
+{
+    // Retomar o céu sem as marcações
+    ocultarConstelacoes();
+
+    StelMovementMgr.setFlagTracking(false);
+    core.selectObjectByName("", false);
+
+    mostrarTexto(
+        "A Herança Viva no Nosso Céu",
+        5
+    );
+
+    // Reservar tempo para a narração final
+    core.wait(50);
+
+    // Parar o tempo antes de encerrar
+    core.setTimeRate(0);
+
+    core.setGuiVisible(true);
+}
+
+// ======================================================
+// EXECUÇÃO
+// ======================================================
+
+// IMPORTANTE:
+// Executar os atos sequencialmente e testar cada etapa.
+// Os tempos são referências para os ensaios.
+
+abertura();
+ato1ViaLactea();
+ato2CruzeiroSul();
+ato3SiriusOrion();
+ato4Escorpiao();
+encerramento();
+
